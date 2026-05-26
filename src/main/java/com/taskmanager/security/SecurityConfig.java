@@ -75,8 +75,12 @@ public class SecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    // Allow all local origins during development
-    configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
+    // Allow all local origin ports (e.g. 5173, 5174) and Vercel subdomains for frictionless local dev and hosting
+    configuration.setAllowedOriginPatterns(List.of(
+        "http://localhost:*", 
+        "http://127.0.0.1:*", 
+        "https://*.vercel.app"
+    ));
     configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control"));
     configuration.setExposedHeaders(List.of("Authorization"));
