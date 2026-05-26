@@ -14,7 +14,7 @@ FROM eclipse-temurin:23-jre-alpine
 WORKDIR /app
 
 # Copy the compiled jar from the build stage
-COPY --from=build /app/build/libs/taskmanager-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/build/libs/*.jar app.jar
 
 # Expose the application port
 EXPOSE 8081
