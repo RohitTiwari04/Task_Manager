@@ -62,11 +62,22 @@ export default function Auth() {
     <div className="auth-wrapper">
       <div className="glass-panel auth-card">
         <div className="auth-header">
-          <div className="auth-logo">
-            <ListTodo size={32} color="#6366F1" />
-            <span>TaskFlow</span>
+          <div className="auth-logo" style={{ 
+            border: '2px solid #ffffff', 
+            padding: '8px 24px', 
+            display: 'inline-flex', 
+            background: '#ffffff', 
+            color: '#000000', 
+            fontFamily: 'var(--font-display)',
+            fontWeight: '900',
+            fontSize: '32px',
+            letterSpacing: '-0.05em'
+          }}>
+            TF.02
           </div>
-          <p className="auth-subtitle">Elevate your daily productivity</p>
+          <p className="auth-subtitle" style={{ marginTop: '16px', fontFamily: 'var(--font-mono)' }}>
+            TASKFLOW EDITORIAL WORKSPACE
+          </p>
         </div>
 
         <div className="auth-tabs">

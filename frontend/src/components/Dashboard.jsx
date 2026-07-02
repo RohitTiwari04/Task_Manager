@@ -178,13 +178,13 @@ export default function Dashboard() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="nav-brand">
-          <CheckCircle2 size={24} color="#6366F1" />
-          <span>TaskFlow</span>
+          <span className="editorial-header-text" style={{ fontSize: '20px', border: '1px solid #ffffff', padding: '4px 12px', background: '#ffffff', color: '#000000', fontFamily: 'var(--font-display)' }}>TF.02</span>
+          <span className="mono-title" style={{ fontSize: '13px', marginLeft: '12px', color: '#a0a0a0' }}>TASKFLOW // CORE</span>
         </div>
         
         <div className="nav-user">
           <div className="user-badge">
-            <Activity size={14} color="#6366F1" />
+            <Activity size={14} style={{ marginRight: '6px' }} />
             <span>Hello, {user?.username}</span>
           </div>
           <button className="btn-logout" onClick={logout}>
@@ -210,9 +210,25 @@ export default function Dashboard() {
           </div>
 
           <div className="glass-panel stat-card">
-            <div className="stat-info">
+            <div className="stat-info" style={{ flex: 1, marginRight: '16px' }}>
               <h3>Progress</h3>
               <div className="stat-value">{completionPercentage}%</div>
+              <div style={{ 
+                width: '100%', 
+                height: '6px', 
+                background: '#222222', 
+                borderRadius: '0',
+                marginTop: '12px',
+                overflow: 'hidden',
+                border: '1px solid #333333'
+              }}>
+                <div style={{ 
+                  width: `${completionPercentage}%`, 
+                  height: '100%', 
+                  background: '#ffffff', 
+                  transition: 'width 0.4s steps(4, end)'
+                }} />
+              </div>
             </div>
             <div className="stat-icon green">
               <CheckCircle2 size={22} />
@@ -241,7 +257,7 @@ export default function Dashboard() {
         </section>
 
         {/* Filter Controls */}
-        <section className="glass-panel controls-panel" style={{ padding: '16px 20px', borderRadius: '14px' }}>
+        <section className="glass-panel controls-panel">
           <div className="search-filter-group">
             <div className="search-wrapper">
               <Search className="search-icon" size={16} />
@@ -342,7 +358,13 @@ export default function Dashboard() {
               >
                 <style>{`.completed-opacity { opacity: 0.85; }`}</style>
                 <div className="task-header">
-                  <h3 className="task-title" title={task.title}>{task.title}</h3>
+                  <h3 
+                    className="task-title" 
+                    title={task.title}
+                    style={task.status === 'COMPLETED' ? { textDecoration: 'line-through', opacity: 0.5 } : {}}
+                  >
+                    {task.title}
+                  </h3>
                   <div className="task-actions">
                     <button className="task-btn" onClick={() => handleOpenEditModal(task)} title="Edit Task">
                       <Edit3 size={14} />
